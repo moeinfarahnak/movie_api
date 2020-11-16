@@ -16,7 +16,7 @@ class App extends Component {
     }
 
     searchMovies = async (text) => {
-        const res = await axios.get(`http://www.omdbapi.com/?apikey=94c3fadb&s=${text}`)
+        const res = await axios.get(`https://www.omdbapi.com/?apikey=94c3fadb&s=${text}`)
         this.setState({
             movies: res.data.Search
         })
