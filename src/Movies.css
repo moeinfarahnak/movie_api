@@ -1,0 +1,10 @@
+#movies {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+@media (max-width: 450px) {
+    #movies {
+        grid-template-columns: auto;
+    }
+}
