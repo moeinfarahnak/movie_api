@@ -1,0 +1,2 @@
+.movie-item{text-align:center;align-content:center}.poster{max-height:16rem;max-width:13rem}@media (max-width:450){.poster{width:90%}}.movie-info{border:1px solid #000}#movies{display:grid;grid-template-columns:repeat(3,auto)}@media (max-width:450px){#movies{grid-template-columns:auto}}body{color:#2e7db3;background-color:#cdd4f5}
+/*# sourceMappingURL=main.30fd437b.chunk.css.map */
