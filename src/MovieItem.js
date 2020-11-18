@@ -9,6 +9,7 @@ export class MovieItem extends Component {
         return (
             <div className='movie-item'>
                 <Link className='link' to={`/movie_api/${imdbID}`}>
+
                     <div className='poster' style={{backgroundImage:`url(${Poster})`}}></div>
                 </Link>
                 <div className='movie-info'>
