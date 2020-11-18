@@ -42,13 +42,13 @@ class App extends Component {
             <Router>
                 <div className='app'>
                     <Switch>
-                        <Route exact path='/'>
+                        <Route exact path='/movie_api'>
                             <Fragment>
                                 <Search searchMovies={this.searchMovies} />
                                 <Movies movies={this.state.movies} loading={this.state.loading} />
                             </Fragment>
                         </Route>
-                        <Route exact path='/detail/:imdbID' render={(r) => {
+                        <Route exact path='movie_api/detail/:imdbID' render={(r) => {
                             return <Movie {...r} getMovie={this.getMovie} movie={this.state.movie} />
                         }}/>
                     </Switch>
