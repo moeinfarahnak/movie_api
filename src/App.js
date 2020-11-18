@@ -48,7 +48,7 @@ class App extends Component {
                                 <Movies movies={this.state.movies} loading={this.state.loading} />
                             </Fragment>
                         </Route>
-                        <Route exact path='/movie_api/detail/:imdbID' render={(r) => {
+                        <Route exact path='/movie_api/:imdbID' render={(r) => {
                             return <Movie {...r} getMovie={this.getMovie} movie={this.state.movie} />
                         }}/>
                     </Switch>
