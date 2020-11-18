@@ -4,13 +4,17 @@ import './Movies.css';
 
 export class Movies extends Component {
     render() {
-        return (
-            <div id='movies'>
-                {this.props.movies.map(movie => {
-                    return <MovieItem info={movie} key={movie.imdbID}/>
-                })}
-            </div>
-        )
+        if(this.props.loading) {
+            return <h1>Error</h1>
+        } else{
+            return (
+                <div id='movies'>
+                    {this.props.movies.map(movie => {
+                        return <MovieItem info={movie} key={movie.imdbID}/>
+                    })}
+                </div>
+            )
+        }
     }
 }
 

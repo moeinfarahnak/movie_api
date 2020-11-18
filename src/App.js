@@ -1,6 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import { BrowserRouter as Router,
+         Switch,
+         Route,
+        } from 'react-router-dom';
 import Search from './Search';
 import Movies from './Movies';
+import Movie from './Movie';
 import './App.css';
 import axios from 'axios';
 
@@ -16,18 +21,39 @@ class App extends Component {
     }
 
     searchMovies = async (text) => {
-        const res = await axios.get(`https://www.omdbapi.com/?apikey=94c3fadb&s=${text}`)
+        this.setState({ loading: true});
+        const res = await axios.get(`https://www.omdbapi.com/?apikey=94c3fadb&s=${text}`);
         this.setState({
-            movies: res.data.Search
+            movies: res.data.Search,
+            loading: false
+        });
+    }
+
+    getMovie = async (imdbID) => {
+        this.setState({loading: true});
+        const res = await axios.get(`https://www.omdbapi.com/?apikey=94c3fadb&plot=full&i=${imdbID}`);
+        this.setState({
+            movie: res.data,
+            loading: false
         })
-        
     }
     render() {
         return (
-            <div className='app'>
-                <Search searchMovies={this.searchMovies} />
-                <Movies movies={this.state.movies} />
-            </div>
+            <Router>
+                <div className='app'>
+                    <Switch>
+                        <Route exact path='/'>
+                            <Fragment>
+                                <Search searchMovies={this.searchMovies} />
+                                <Movies movies={this.state.movies} loading={this.state.loading} />
+                            </Fragment>
+                        </Route>
+                        <Route exact path='/detail/:imdbID' render={(r) => {
+                            return <Movie {...r} getMovie={this.getMovie} movie={this.state.movie} />
+                        }}/>
+                    </Switch>
+                </div>
+            </Router>
         );
     }
 }

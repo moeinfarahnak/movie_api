@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './Search.css';
 
 class Search extends Component {
     constructor(props) {
@@ -19,13 +20,14 @@ class Search extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
-                    <input type='text'
+                <form id='search-form' onSubmit={this.onSubmit}>
+                    <input className='search-input'
+                           type='text'
                            placeholder='Search Movie'
                            value={this.state.text}
                            onChange={this.onChange}
                            />
-                    <input type='submit' value='Search' />
+                    <input className='search-submit' type='submit' value='Search' />
                 </form>
             </div>
         )

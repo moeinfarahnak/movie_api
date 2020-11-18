@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import './MovieItem.css';
 
 export class MovieItem extends Component {
@@ -7,12 +8,11 @@ export class MovieItem extends Component {
     
         return (
             <div className='movie-item'>
-                <img className='poster' src={Poster!=='N/A' ? Poster: 'no-image.png'} alt='#'></img>
+                <Link className='link' to={`detail/${imdbID}`}>
+                    <div className='poster' style={{backgroundImage:`url(${Poster})`}}></div>
+                </Link>
                 <div className='movie-info'>
-                    <div>{Title}</div>
-                    <div>{Year}</div>
-                    <div>{Type}</div>
-                    <div>{imdbID}</div>
+                    <div className='movie-title'>{Title}<span> {Year}</span></div>
                 </div>
             </div>
         )
