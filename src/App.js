@@ -38,23 +38,23 @@ class App extends Component {
         })
     }
     render() {
-        return (
-            <Router>
-                <div className='app'>
-                    <Switch>
-                        <Route exact path='/movie_api'>
-                            <Fragment>
-                                <Search searchMovies={this.searchMovies} />
-                                <Movies movies={this.state.movies} loading={this.state.loading} />
-                            </Fragment>
-                        </Route>
-                        <Route exact path='/movie_api/:imdbID' render={(r) => {
-                            return <Movie {...r} getMovie={this.getMovie} movie={this.state.movie} />
-                        }}/>
-                    </Switch>
-                </div>
-            </Router>
-        );
+            return (
+                <Router>
+                    <div className='app'>
+                        <Switch>
+                            <Route exact path='/movie_api'>
+                                <Fragment>
+                                    <Search searchMovies={this.searchMovies} />
+                                    <Movies movies={this.state.movies} loading={this.state.loading} />
+                                </Fragment>
+                            </Route>
+                            <Route exact path='/movie_api/:imdbID' render={(r) => {
+                                return <Movie {...r} getMovie={this.getMovie} movie={this.state.movie} loading={this.state.loading} />
+                            }}/>
+                        </Switch>
+                    </div>
+                </Router>
+            );
     }
 }
 

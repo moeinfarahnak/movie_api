@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MovieItem from './MovieItem';
+import Spinner from './Spinner';
 import './Movies.css';
 
-export class Movies extends Component {
-    render() {
-        if(this.props.loading) {
-            return <h1>Error</h1>
+const Movies = (props) => {
+        if(props.loading) {
+            return <Spinner />
         } else{
             return (
                 <div id='movies'>
-                    {this.props.movies.map(movie => {
+                    {props.movies.map(movie => {
                         return <MovieItem info={movie} key={movie.imdbID}/>
                     })}
                 </div>
             )
         }
-    }
 }
 
 export default Movies
